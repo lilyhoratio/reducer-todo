@@ -4,31 +4,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Todo = props => {
   // console.log("todo props", props.todo.completed);
 
+  console.log("todo", props)
+  const {todo} = props
+
   return (
     // <div className="todo-container">
     <div
-      className={`todo-container${props.todo.completed ? "-completed" : ""}`}
+      className={`todo-container${todo.completed ? "-completed" : ""}`}
     >
       <div
         className="todo-text"
-        onClick={() => props.toggleItem(props.todo.id)}
+        // onClick={() => props.toggleItem(todo.id)}
       >
-        <p>{props.todo.task}</p>
+        <p>{todo.item}</p>
       </div>
 
-      <div className={`todo-icons${props.todo.completed ? "-completed" : ""}`}>
+      <div className={`todo-icons${todo.completed ? "-completed" : ""}`}>
         <FontAwesomeIcon icon="edit" id="task-icon" onClick={null} />
         {/* click edit button which adds props to todo (edit=true) */}
         {/* ternary to render input instead of props.todo.task */}
         <FontAwesomeIcon
           icon="check"
           id="task-icon"
-          onClick={() => props.toggleItem(props.todo.id)}
+        //   onClick={() => toggleItem(todo.id)}
         />
         <FontAwesomeIcon
           icon="trash"
           id="task-icon"
-          onClick={() => props.deleteItem(props.todo.id)}
+        //   onClick={() => deleteItem(todo.id)}
         />
       </div>
     </div>

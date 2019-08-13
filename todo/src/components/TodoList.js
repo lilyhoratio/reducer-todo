@@ -2,11 +2,15 @@ import React from 'react';
 import Todo from "./Todo";
 
 const TodoList = (props) => {
+
+    const {todos} = props
+    console.log("todolist props", todos)
+
     return (
             <div className="todo-list">
               <div className="todo-list-incomplete">
                 <h4>To-dos</h4>
-                {props.todos.map(todo => {
+                {todos.map(todo => {
                   if (!todo.completed) {
                     return (
                       <Todo
@@ -26,8 +30,8 @@ const TodoList = (props) => {
                   <button onClick={props.clearCompleted}>Clear Completed</button>
                     
                 </div>
-                {props.todos.map(todo => {
-                  if (todo.completed) {
+                {todos.map(todo => {
+                //   if (todo.completed) {
                     return (
                       <Todo
                         key={todo.id}
@@ -37,7 +41,7 @@ const TodoList = (props) => {
                         deleteItem={props.deleteItem}
                       />
                     );
-                  }
+                //   }
                 })}
               </div>
             </div>
