@@ -1,38 +1,24 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Todo = props => {
-  // console.log("todo props", props.todo.completed);
+const Todo = ({dispatch, todo}) => {
 
-  console.log("todo", props)
-  const {todo} = props
+  console.log(todo)
+
+  const toggleItem = (e) => {
+    // e.preventDefault() // why does this break it?
+    dispatch({type: "TOGGLE_TODO", id: todo.id})
+  }
 
   return (
-    // <div className="todo-container">
-    <div
-      className={`todo-container${todo.completed ? "-completed" : ""}`}
-    >
-      <div
-        className="todo-text"
-        // onClick={() => props.toggleItem(todo.id)}
-      >
+    <div className={`todo-container${todo.completed ? "-completed" : ""}`}>
+      <div className="todo-text" onClick={toggleItem}>
         <p>{todo.item}</p>
       </div>
 
       <div className={`todo-icons${todo.completed ? "-completed" : ""}`}>
-        <FontAwesomeIcon icon="edit" id="task-icon" onClick={null} />
-        {/* click edit button which adds props to todo (edit=true) */}
-        {/* ternary to render input instead of props.todo.task */}
-        <FontAwesomeIcon
-          icon="check"
-          id="task-icon"
-        //   onClick={() => toggleItem(todo.id)}
-        />
-        <FontAwesomeIcon
-          icon="trash"
-          id="task-icon"
-        //   onClick={() => deleteItem(todo.id)}
-        />
+        <FontAwesomeIcon icon="check" id="task-icon" onClick={() => toggleItem(todo.id)} />
+        {/* <FontAwesomeIcon icon="trash" id="task-icon" onClick={() => deleteItem(todo.id)} /> */}
       </div>
     </div>
   );

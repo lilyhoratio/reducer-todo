@@ -1,7 +1,7 @@
-import React, {useReducer} from "react";
+import React, { useReducer } from "react";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
-import {initialState, reducer} from "./reducers/reducer"
+import { initialState, reducer } from "./reducers/reducer"
 import './App.css';
 
 // font awesome
@@ -25,9 +25,15 @@ const App = () => {
   console.log("todos", state)
 
   return (
-    <div className="App">
-      <TodoForm dispatch={dispatch}/>
-      {/* <TodoList /> */}
+    <div className="todo-all">
+        <div className="todo-header">
+          <h2>__Dunderlist__</h2>
+          <FontAwesomeIcon id="task-icon" icon="tasks" />
+        </div>
+        <div className="todo-main">
+          <TodoForm dispatch={dispatch} />
+          <TodoList dispatch={dispatch} state={state} />
+        </div>
     </div>
   );
 }
