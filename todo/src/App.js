@@ -1,4 +1,4 @@
-import React, {useState, useReducer} from "react";
+import React, {useReducer} from "react";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 import {initialState, reducer} from "./reducers/reducer"
@@ -19,12 +19,15 @@ library.add(faTasks, faTrash, faPlusSquare, faCheck, faEdit);
 
 const App = () => {
 
-  const [todos, setTodos] = useState(initialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  console.log("dispatch", dispatch)
+  console.log("todos", state)
 
   return (
     <div className="App">
-      <TodoForm />
-      <TodoList todos={todos}/>
+      <TodoForm dispatch={dispatch}/>
+      {/* <TodoList /> */}
     </div>
   );
 }

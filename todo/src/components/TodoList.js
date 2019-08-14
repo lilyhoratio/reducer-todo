@@ -11,7 +11,7 @@ const TodoList = (props) => {
               <div className="todo-list-incomplete">
                 <h4>To-dos</h4>
                 {todos.map(todo => {
-                  if (!todo.completed) {
+                //   if (!todo.completed) {
                     return (
                       <Todo
                         key={todo.id}
@@ -21,10 +21,10 @@ const TodoList = (props) => {
                         deleteItem={props.deleteItem}
                       />
                     );
-                  }
+                //   }
                 })}
               </div>
-              <div className="todo-list-complete">
+              {/* <div className="todo-list-complete">
                 <div className="todo-list-complete-header">
                   <h4>Completed</h4>
                   <button onClick={props.clearCompleted}>Clear Completed</button>
@@ -43,7 +43,7 @@ const TodoList = (props) => {
                     );
                 //   }
                 })}
-              </div>
+              </div> */}
             </div>
     )
 }
